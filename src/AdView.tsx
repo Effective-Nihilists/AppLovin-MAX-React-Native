@@ -194,7 +194,7 @@ export const AdView = forwardRef<AdViewHandler, AdViewProps & ViewProps>(functio
         if (adViewRef.current) {
             UIManager.dispatchViewManagerCommand(
                 findNodeHandle(adViewRef.current),
-                UIManager.getViewManagerConfig('AppLovinMAXAdView').Commands.loadAd,
+                UIManager.getViewManagerConfig('AppLovinMAXAdView').Commands['loadAd']!,
                 undefined
             );
         }

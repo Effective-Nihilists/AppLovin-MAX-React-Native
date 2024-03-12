@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, ScrollView, View, Dimensions, Platform } from 'react-native';
 import { AdFormat, AdView } from '../../src/index';

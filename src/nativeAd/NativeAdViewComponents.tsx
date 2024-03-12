@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useContext, useRef, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { findNodeHandle, Text, Image, View, TouchableOpacity, StyleSheet } from 'react-native';

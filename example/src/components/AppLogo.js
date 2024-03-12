@@ -1,13 +1,8 @@
+import { jsx as _jsx } from "react/jsx-runtime";
 import { View, Image, StyleSheet } from 'react-native';
-
 const AppLogo = () => {
-    return (
-        <View style={styles.container}>
-            <Image style={styles.logo} source={require('../resources/applovin_logo.png')} />
-        </View>
-    );
+    return (_jsx(View, { style: styles.container, children: _jsx(Image, { style: styles.logo, source: require('../resources/applovin_logo.png') }) }));
 };
-
 const styles = StyleSheet.create({
     logo: {
         resizeMode: 'stretch',
@@ -20,5 +15,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center', // vertical-align
     },
 });
-
 export default AppLogo;

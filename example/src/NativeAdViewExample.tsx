@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { StyleSheet, View, Platform } from 'react-native';
 import {

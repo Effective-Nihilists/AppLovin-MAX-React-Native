@@ -1,103 +1,84 @@
 import { NativeModules } from 'react-native';
-import type { AppLovinMAXType } from './types/AppLovinMAX';
-import type { Configuration } from './types/Configuration';
-
 const NativeAppLovinMAX = NativeModules['AppLovinMAX'];
-
 const VERSION = '6.3.0';
-
 /**
  * This enum represents the user's geography used to determine the type of consent flow shown to the
  * user.
  */
-export enum ConsentFlowUserGeography {
+export var ConsentFlowUserGeography;
+(function (ConsentFlowUserGeography) {
     /**
      * User's geography is unknown.
      */
-    UNKNOWN = 'U',
-
+    ConsentFlowUserGeography["UNKNOWN"] = "U";
     /**
      * The user is in GDPR region.
      */
-    GDPR = 'G',
-
+    ConsentFlowUserGeography["GDPR"] = "G";
     /**
      * The user is in a non-GDPR region.
      */
-    OTHER = 'O',
-}
-
+    ConsentFlowUserGeography["OTHER"] = "O";
+})(ConsentFlowUserGeography || (ConsentFlowUserGeography = {}));
 /**
  * AppLovin SDK-defined app tracking transparency status values (extended to include "unavailable"
  * state on iOS before iOS14).
  */
-export enum AppTrackingStatus {
+export var AppTrackingStatus;
+(function (AppTrackingStatus) {
     /**
      * Device is on iOS before iOS14, AppTrackingTransparency.framework is not available.
      */
-    UNAVAILABLE = 'U',
-
+    AppTrackingStatus["UNAVAILABLE"] = "U";
     /**
      * The user has not yet received an authorization request to authorize access to app-related
      * data that can be used for tracking the user or the device.
      */
-    NOT_DETERMINED = 'N',
-
+    AppTrackingStatus["NOT_DETERMINED"] = "N";
     /**
      * Authorization to access app-related data that can be used for tracking the user or the device
      * is restricted.
      */
-    RESTRICTED = 'R',
-
+    AppTrackingStatus["RESTRICTED"] = "R";
     /**
      * The user denies authorization to access app-related data that can be used for tracking the
      * user or the device.
      */
-    DENIED = 'D',
-
+    AppTrackingStatus["DENIED"] = "D";
     /**
      * The user authorizes access to app-related data that can be used for tracking the user or the
      * device.
      */
-    AUTHORIZED = 'A',
-}
-
+    AppTrackingStatus["AUTHORIZED"] = "A";
+})(AppTrackingStatus || (AppTrackingStatus = {}));
 /**
  * Represents errors for CMP flow.
  */
-export enum CMPErrorCode {
+export var CMPErrorCode;
+(function (CMPErrorCode) {
     /**
      * Indicates that an unspecified error has occurred.
      */
-    UNSPECIFIED = -1,
-
+    CMPErrorCode[CMPErrorCode["UNSPECIFIED"] = -1] = "UNSPECIFIED";
     /**
      * Indicates that the CMP has not been integrated correctly.
      */
-    INTEGRATION_ERROR = 1,
-
+    CMPErrorCode[CMPErrorCode["INTEGRATION_ERROR"] = 1] = "INTEGRATION_ERROR";
     /**
      * Indicates that the CMP form is unavailable.
      */
-    FORM_UNAVAILABLE = 2,
-
+    CMPErrorCode[CMPErrorCode["FORM_UNAVAILABLE"] = 2] = "FORM_UNAVAILABLE";
     /**
      * Indicates that the CMP form is not required.
      */
-    FORM_NOT_REQUIRED = 3,
-}
-
-const initialize = async (sdkKey: string): Promise<Configuration> => {
+    CMPErrorCode[CMPErrorCode["FORM_NOT_REQUIRED"] = 3] = "FORM_NOT_REQUIRED";
+})(CMPErrorCode || (CMPErrorCode = {}));
+const initialize = async (sdkKey) => {
     return NativeAppLovinMAX.initialize(VERSION, sdkKey);
 };
-
-type NativeAppLovinMAXType = Omit<AppLovinMAXType, 'initialize'>;
-
-const nativeMethods: NativeAppLovinMAXType = NativeAppLovinMAX;
-
-export const AppLovinMAX: AppLovinMAXType = {
+const nativeMethods = NativeAppLovinMAX;
+export const AppLovinMAX = {
     ...nativeMethods,
     initialize,
 };
-
 export default AppLovinMAX;

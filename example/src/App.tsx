@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { Platform, StyleSheet, Text, View, SafeAreaView, Dimensions } from 'react-native';
 import AppLovinMAX, { ConsentFlowUserGeography, AppTrackingStatus } from '../../src/index';

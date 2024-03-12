@@ -4,24 +4,29 @@
     "paths": {
       "react-native-applovin-max": ["./src/index"]
     },
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
+    "lib": ["DOM", "es2022"],
+    "module": "es2022",
+    "target": "es2022",
+    "strict": true,
     "esModuleInterop": true,
-    "verbatimModuleSyntax": true,
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react",
-    "lib": ["esnext", "dom"],
-    "module": "esnext",
     "moduleResolution": "node",
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
     "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
     "noImplicitReturns": true,
-    "noImplicitUseStrict": false,
-    "noStrictGenericChecks": false,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+
+    // Modifications from node16 strict defaults
+    "exactOptionalPropertyTypes": false,
     "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "esnext"
+    "jsx": "react-jsx",
+    "checkJs": false,
+    "types": [],
   }
 }

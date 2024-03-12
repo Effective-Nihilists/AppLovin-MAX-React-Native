@@ -8,6 +8,9 @@ module.exports = {
         "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended"
     ],
+    settings: {
+        'import/ignore': ['react-native'],
+      },
     "overrides": [
         {
             "env": {
@@ -31,5 +34,6 @@ module.exports = {
         "react"
     ],
     "rules": {
+        'react/react-in-jsx-scope': 'off',
     }
 }

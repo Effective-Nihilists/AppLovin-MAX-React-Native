@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { forwardRef, useContext, useImperativeHandle, useRef, useState, useEffect, useCallback } from 'react';
 import { NativeModules, requireNativeComponent, UIManager, findNodeHandle } from 'react-native';
 import type { ViewProps } from 'react-native';
@@ -59,34 +58,35 @@ const NativeAdViewComponent = requireNativeComponent<NativeAdViewProps & ViewPro
  * </NativeAdView>
  * ```
  */
-export const NativeAdView = forwardRef<NativeAdViewHandler, NativeAdViewProps & ViewProps>(
-    function NativeAdView(props, ref) {
-        const [isInitialized, setIsInitialized] = useState<boolean>(false);
+export const NativeAdView = forwardRef<NativeAdViewHandler, NativeAdViewProps & ViewProps>(function NativeAdView(
+    props,
+    ref
+) {
+    const [isInitialized, setIsInitialized] = useState<boolean>(false);
 
-        useEffect(() => {
-            // check that AppLovinMAX has been initialized
-            AppLovinMAX.isInitialized().then((result: boolean) => {
-                setIsInitialized(result);
-                if (!result) {
-                    console.warn(
-                        'NativeAdView is mounted before the initialization of the AppLovin MAX React Native module'
-                    );
-                }
-            });
-        }, []);
+    useEffect(() => {
+        // check that AppLovinMAX has been initialized
+        AppLovinMAX.isInitialized().then((result: boolean) => {
+            setIsInitialized(result);
+            if (!result) {
+                console.warn(
+                    'NativeAdView is mounted before the initialization of the AppLovin MAX React Native module'
+                );
+            }
+        });
+    }, []);
 
-        // Not ready to render NativeAdView
-        if (!isInitialized) {
-            return null;
-        }
-
-        return (
-            <NativeAdViewProvider>
-                <NativeAdViewImpl {...props} ref={ref} />
-            </NativeAdViewProvider>
-        );
+    // Not ready to render NativeAdView
+    if (!isInitialized) {
+        return null;
     }
-);
+
+    return (
+        <NativeAdViewProvider>
+            <NativeAdViewImpl {...props} ref={ref} />
+        </NativeAdViewProvider>
+    );
+});
 
 const NativeAdViewImpl = forwardRef<NativeAdViewHandler, NativeAdViewProps & ViewProps>(function NativeAdViewImpl(
     {
@@ -116,7 +116,7 @@ const NativeAdViewImpl = forwardRef<NativeAdViewHandler, NativeAdViewProps & Vie
         if (nativeAdViewRef) {
             UIManager.dispatchViewManagerCommand(
                 findNodeHandle(nativeAdViewRef.current),
-                UIManager.getViewManagerConfig('AppLovinMAXNativeAdView').Commands.loadAd,
+                UIManager.getViewManagerConfig('AppLovinMAXNativeAdView').Commands['loadAd']!,
                 undefined
             );
         }
